@@ -3,6 +3,6 @@ services:
     mariadb:
         image: inception-mariadb
         container_name: inception-mariadb
-        restart: always
         ports:
             - 3306:3306
+        restart: always
