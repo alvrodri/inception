@@ -1,11 +1,9 @@
 DOCKER_COMPOSE_PATH	=	./srcs/docker-compose.yaml
-DOCKER_CONTAINERS	=	mariadb
-
-all:
-	$(start)
 
 start:
-	docker build ./srcs/$(DOCKER_CONTAINERS) -t inception-$(DOCKER_CONTAINERS)
+	docker build ./srcs/requirements/mariadb -t inception-mariadb
+	docker build ./srcs/requirements/nginx -t inception-nginx
+	docker build ./srcs/requirements/wordpress -t inception-wordpress
 	docker-compose -f $(DOCKER_COMPOSE_PATH) up -d
 
 stop:
