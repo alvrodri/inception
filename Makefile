@@ -9,6 +9,9 @@ start:
 stop:
 	docker-compose -f $(DOCKER_COMPOSE_PATH) down
 
+stop-volume:
+	docker-compose -f $(DOCKER_COMPOSE_PATH) down --volumes
+
 clean:
 	$(stop)
-	docker stop $$(docker ps -a -q)
+	docker system prune -a
