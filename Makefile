@@ -7,10 +7,10 @@ start:
 	docker-compose -f $(DOCKER_COMPOSE_PATH) up -d
 
 stop:
-	docker-compose -f $(DOCKER_COMPOSE_PATH) down
+	docker-compose -f $(DOCKER_COMPOSE_PATH) stop
 
 stop-volume:
-	docker-compose -f $(DOCKER_COMPOSE_PATH) down --volumes
+	docker-compose -f $(DOCKER_COMPOSE_PATH) down -v
 
 clean:
 	$(stop)

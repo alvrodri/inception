@@ -10,10 +10,11 @@ RUN apt -y install nginx wget php-cgi php-common php-fpm php-pear php-mbstring p
 RUN wget -P /var/www/html https://wordpress.org/latest.tar.gz
 RUN tar -xvzf /var/www/html/latest.tar.gz
 
-COPY ./conf/wp-config.php /Users/alvrodri/data/wordpress/wordpress/wp-config.php
+COPY ./conf/wp-config.php /conf/wp-config.php
 COPY ./conf/default /etc/nginx/sites-available/default
 COPY ./conf/start.sh /conf/start.sh
 
 RUN chmod 777 ./conf/start.sh
+RUN chmod 777 -R /var/www/html/
 
 ENTRYPOINT ./conf/start.sh

@@ -4,49 +4,28 @@ services:
         image: inception-mariadb
         container_name: inception-mariadb
         volumes:
-            - volume-mariadb:/Users/alvrodri/data/mariadb
-        ports:
-            - 3306:3306
+            - ~/data/db:/var/lib/mysql
         environment:
             - DB_USER_ADMIN=${DB_USER_ADMIN}
             - DB_PASSWORD_ADMIN=${DB_PASSWORD_ADMIN}
             - DB_USER_REG=${DB_USER_REG}
             - DB_PASSWORD_REG=${DB_PASSWORD_REG}
         restart: always
-        networks:
-            - inception-network
     nginx:
         image: inception-nginx
         container_name: inception-nginx
-        stdin_open: true
-        tty: true
         ports:
             - 443:443
             - 80:80
         restart: always
-        networks:
-            - inception-network
     wordpress:
         image: inception-wordpress
         container_name: inception-wordpress
-        stdin_open: true
-        tty: true
         volumes:
-            - volume-wordpress:/Users/alvrodri/data/wordpress
-        ports:
-            - 5000:80
+            - ~/data/wp:/var/www/html
         environment:
             - DB_USER_ADMIN=${DB_USER_ADMIN}
             - DB_PASSWORD_ADMIN=${DB_PASSWORD_ADMIN}
             - DB_USER_REG=${DB_USER_REG}
             - DB_PASSWORD_REG=${DB_PASSWORD_REG}
         restart: always
-        networks:
-            - inception-network
-networks:
-    inception-network:
-        driver: bridge
-
-volumes:
-    volume-mariadb:
-    volume-wordpress:

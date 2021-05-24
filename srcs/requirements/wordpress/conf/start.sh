@@ -1,8 +1,8 @@
-chown -R www-data:www-data /Users/alvrodri/data/wordpress/wordpress
-DIR="/Users/alvrodri/wordpress/wordpress"
+DIR="/var/www/html/wordpress"
 if [ ! -d "$DIR" ]; then
-    cp -r /wordpress /Users/alvrodri/data/wordpress/
-    chown -R www-data:www-data /Users/alvrodri/data/wordpress/wordpress
+    cp -r /wordpress /var/www/html/wordpress
+    cp /conf/wp-config.php /var/www/html/wordpress/wp-config.php
+    chown -R www-data:www-data /var/www/html/wordpress
 fi
 service php7.3-fpm start
 service nginx start
