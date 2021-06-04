@@ -7,6 +7,7 @@ RUN apt -y install software-properties-common
 RUN apt -y install mariadb-server
 
 COPY ./conf/start.sh /conf/start.sh
+COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
 
 RUN chmod 777 /conf/start.sh
 
