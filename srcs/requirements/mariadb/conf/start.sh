@@ -1,3 +1,4 @@
+mysql_install_db
 service mysql start
 mysql -e "CREATE USER '$DB_USER_ADMIN'@'%' IDENTIFIED BY '$DB_PASSWORD_ADMIN'"
 mysql -e "CREATE USER '$DB_USER_REG'@'%' IDENTIFIED BY '$DB_PASSWORD_REG'"
