@@ -18,13 +18,13 @@ services:
         ports:
             - 443:443
             - 80:80
+        volumes:
+            - /home/alvrodri/data/wp:/var/www/html
         restart: always
     wordpress:
         image: inception-wordpress
         container_name: inception-wordpress
         tty: true
-        ports:
-            - 5000:80
         volumes:
             - /home/alvrodri/data/wp:/var/www/html
         environment:
